@@ -1,0 +1,54 @@
+.form {
+  /* Розміри та центрування */
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+
+  /* Сучасний Glassmorphism ефект */
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+
+  /* Заокруглення та рамка */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+  /* Розташування інпутів у колонку */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .form__title {
+    margin-bottom: 10px;
+    text-align: center;
+    color: #1a202c;
+  }
+
+  .form__input {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+
+  .form__input:focus {
+    border-color: #3182ce;
+  }
+
+  .form__button {
+    background: #3182ce;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .form__button:hover {
+    background: #2b6cb0;
+  }
+}

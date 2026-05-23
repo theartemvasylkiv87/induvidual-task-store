@@ -20,7 +20,27 @@
         data-hx-get="global.header-nav.partial.html"
       ></nav>
     </header>
-    <main class="main"></main>
+    <main class="main">
+      <div id="shopView">
+        <nav
+          data-hx-trigger="load"
+          data-hx-swap="outerHTML"
+          data-hx-get="index.form-section.partial.html"
+        ></nav>
+        <nav
+          data-hx-trigger="load"
+          data-hx-swap="outerHTML"
+          data-hx-get="index.inventory-section.partial.html"
+        ></nav>
+      </div>
+      <div id="ordersView" class="orders-view is-hidden">
+        <nav
+          data-hx-trigger="load"
+          data-hx-swap="outerHTML"
+          data-hx-get="index.orders-view.partial.html"
+        ></nav>
+      </div>
+    </main>
     <footer class="footer"></footer>
   </body>
 </html>
