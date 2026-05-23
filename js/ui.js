@@ -1,7 +1,7 @@
 // js/ui.js
 import { getProducts } from "./state.js";
 
-export function renderProducts(productsToRender = null) {
+export function renderProducts(productsToRender) {
   const products = productsToRender || getProducts();
   const productsContainer = document.querySelector("#productsList");
   if (!productsContainer) return;
