@@ -1,0 +1,45 @@
+.header {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  .header-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    /* Pushes Logo to Left, Nav to Right */
+    align-items: center;
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1a202c;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+
+      .nav-link {
+        text-decoration: none;
+        color: #4a5568;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+      }
+      .nav-link:hover {
+        color: #3182ce;
+        /* Nice Blue hover */
+      }
+    }
+  }
+}

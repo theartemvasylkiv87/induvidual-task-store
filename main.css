@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img,
+video,
+iframe,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  /* Створюємо градієнт з 4-х кольорів */
+  background: linear-gradient(-45deg, #fef9e7, #ebf5fb, #fefded, #d6eaf8);
+  /* Розтягуємо фон, щоб було куди його совати */
+  background-size: 400% 400%;
+
+  /* Підключаємо анімацію: назва, тривалість, нескінченно */
+  animation: gradientAnimation 15s ease infinite;
+
+  /* Щоб фон займав усю висоту екрана */
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+.is-hidden {
+  display: none;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
