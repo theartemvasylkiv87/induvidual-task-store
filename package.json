@@ -1,0 +1,26 @@
+{
+  "name": "induvidual-task-store",
+  "version": "1.0.0",
+  "description": "This template repository includes preconfigured GitHub Action that will validate html files in a project with (HTMLProofer)[https://github.com/gjtorikian/html-proofer/]. And htmx to load partials",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch scss/style.scss css/style.css"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theartemvasylkiv87/induvidual-task-store.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/theartemvasylkiv87/induvidual-task-store/issues"
+  },
+  "homepage": "https://github.com/theartemvasylkiv87/induvidual-task-store#readme",
+  "devDependencies": {
+    "sass": "^1.100.0"
+  }
+}

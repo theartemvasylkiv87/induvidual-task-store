@@ -21,7 +21,7 @@
       ></nav>
     </header>
     <main class="main">
-      <div id="shopView">
+      <!-- <div id="shopView">
         <nav
           data-hx-trigger="load"
           data-hx-swap="outerHTML"
@@ -30,7 +30,12 @@
         <nav
           data-hx-trigger="load"
           data-hx-swap="outerHTML"
-          data-hx-get="index.inventory&products-section.partial.html"
+          data-hx-get="index.inventory-inner.partial.html"
+        ></nav>
+        <nav
+          data-hx-trigger="load"
+          data-hx-swap="outerHTML"
+          data-hx-get="index.products-list.partial.html"
         ></nav>
       </div>
       <div id="ordersView" class="orders-view is-hidden">
@@ -38,11 +43,11 @@
           data-hx-trigger="load"
           data-hx-swap="outerHTML"
           data-hx-get="index.orders-view.partial.html"
-        ></nav>
+        ></nav> -->
       </div>
     </main>
     <footer class="footer"></footer>
-    <nav
+    <!-- <nav
       data-hx-trigger="load"
       data-hx-swap="outerHTML"
       data-hx-get="index.cart-overlay.partial.html"
@@ -51,7 +56,7 @@
       data-hx-trigger="load"
       data-hx-swap="outerHTML"
       data-hx-get="index.cart-drawer.partial.html"
-    ></nav>
+    ></nav> -->
     <script type="module" src="js/script.js"></script>
   </body>
 </html>
