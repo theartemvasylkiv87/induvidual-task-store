@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Розміри елемента включають внутрішні відступи та рамки */
+  margin: 0;
+  padding: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block; /* Прибирає дивні пробіли знизу */
+  max-width: 100%; /* Щоб картинки не вилазили за межі екрана */
+}
+
+ul,
+ol {
+  list-style: none; /* Прибираємо маркери списків */
+}
+
+a {
+  text-decoration: none; /* Прибираємо стандартне підкреслення посилань */
+  color: inherit; /* Посилання успадковує колір тексту поруч */
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit; /* Щоб шрифти в інпутах були такі ж, як у body */
+}
+
+button {
+  cursor: pointer; /* Щоб при наведенні завжди з'являлася "рука" */
+  background: none;
+  border: none;
+}

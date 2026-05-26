@@ -1,8 +1,51 @@
 .header {
-    &-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2rem;
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); // Для підтримки Safari
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); // Тонка лінія знизу краще, ніж border з усіх боків
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem; // Трохи менше зверху/знизу для компактності
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  // Використовуємо & прямо всередині .header, щоб не дублювати назви
+  &-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &-icon {
+      font-size: 1.5rem;
     }
+
+    &-text {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--text-main); // Трохи м'якший за чистий чорний
+    }
+  }
+
+  &-nav {
+    display: flex;
+    gap: 2rem;
+
+    &-link {
+      color: var(--text-main);
+      font-size: 1.1rem;
+      transition: color 0.3s ease; // Плавна зміна кольору
+
+      &:hover {
+        color: var(--accent-hover); // Твій золотий колір WatchVault замість просто сірого
+      }
+    }
+  }
 }

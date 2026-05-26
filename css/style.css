@@ -1,8 +1,125 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Finlandica+Text:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Розміри елемента включають внутрішні відступи та рамки */
+  margin: 0;
+  padding: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block; /* Прибирає дивні пробіли знизу */
+  max-width: 100%; /* Щоб картинки не вилазили за межі екрана */
+}
+
+ul,
+ol {
+  list-style: none; /* Прибираємо маркери списків */
+}
+
+a {
+  text-decoration: none; /* Прибираємо стандартне підкреслення посилань */
+  color: inherit; /* Посилання успадковує колір тексту поруч */
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit; /* Щоб шрифти в інпутах були такі ж, як у body */
+}
+
+button {
+  cursor: pointer; /* Щоб при наведенні завжди з'являлася "рука" */
+  background: none;
+  border: none;
+}
+
+:root {
+  /* Градієнт (абстрактні назви, щоб легко міняти кольори) */
+  --bg-gradient-1: #fef9e7;
+  --bg-gradient-2: #ebf5fb;
+  --bg-gradient-3: #fefded;
+  --bg-gradient-4: #d6eaf8;
+  /* Базові кольори */
+  --clr-white: #ffffff;
+  --clr-black: #1a1a1a;
+  /* Текст та інтерфейс */
+  --text-main: #333333;
+  --text-muted: #666666; /* Для менш важливого тексту */
+  /* Брендові кольори (Акценти) */
+  --accent-primary: #d4af37; /* Твій золотий */
+  --accent-hover: #b8952d; /* Трохи темніше золото для ховера */
+  /* Скляний ефект */
+  --header-bg: rgba(255, 255, 255, 0.2);
+}
+
+body {
+  font-family: "Finlandica Text";
+  background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3), var(--bg-gradient-4));
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.header {
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.header-logo-icon {
+  font-size: 1.5rem;
+}
+.header-logo-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-main);
+}
+.header-nav {
+  display: flex;
+  gap: 2rem;
+}
+.header-nav-link {
+  color: var(--text-main);
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+.header-nav-link:hover {
+  color: var(--accent-hover);
 }
 
 /*# sourceMappingURL=style.css.map */
