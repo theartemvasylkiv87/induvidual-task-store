@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WatchVault</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    
+    <script type="module" crossorigin src="/assets/index-WKC2cbNo.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-ylAHMaK0.css">
+  </head>
+  <body>
+    <header class="header">
+      <header class="header">
+  <div class="header-container">
+    <div class="header-logo">
+      <span class="header-logo-icon">⌚</span>
+      <span class="header-logo-text">WatchVault</span>
+    </div>
+
+    <nav class="header-nav">
+      <a href="#" class="header-nav-link" id="inventoryLink">Inventory</a>
+      <a href="#" class="header-nav-link" id="ordersLink">Orders</a>
+      <a href="#" class="header-nav-link" id="cartLink"
+        >Cart <span class="header-cart-count">0</span></a
+      >
+    </nav>
+  </div>
+</header>
+
+    </header>
+
+    <main class="main">
+      <div id="shopView">
+        <section class="form">
+  <h2 class="form__title">➕ Register New Watch</h2>
+  <input
+    type="text"
+    placeholder="Brand & Model"
+    id="name"
+    class="form__input form__name"
+  />
+  <input
+    type="number"
+    placeholder="Price per unit ($)"
+    id="price"
+    class="form__input form__price"
+  />
+  <input
+    type="number"
+    placeholder="In Stock (pcs)"
+    id="qty"
+    class="form__input form__quantity"
+  />
+  <input
+    type="text"
+    placeholder="Image URL"
+    id="image"
+    class="form__input form__image"
+  />
+  <button class="form__button" id="addBtn">Add to Inventory</button>
+</section>
+
+        <div class="inventory__header">
+  <h2>🛒 Current Stock</h2>
+  <div class="inventory__actions">
+    <select
+      id="sortSelect"
+      class="search-box__input"
+      style="width: auto; margin-right: 10px"
+    >
+      <option value="default">Default</option>
+      <option value="price-desc">Price: High to Low ↓</option>
+      <option value="price-asc">Price: Low to High ↑</option>
+    </select>
+
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Filter watches..."
+        id="searchInput"
+        class="search-box__input"
+      />
+      <span class="search-box__icon">🔍</span>
+    </div>
+  </div>
+</div>
+
+          <div id="productsList" class="products-list"></div>
+      </div>
+      
+      <div id="ordersView" class="orders-view is-hidden">
+        <div class="orders-view__container">
+  <header class="orders-view__header">
+    <h2 class="orders-view__title">📋 Order History</h2>
+    <p class="orders-view__subtitle">Manage and track your recent purchases</p>
+  </header>
+
+  <section class="orders-view__content">
+    <div id="ordersList" class="orders-list"></div>
+  </section>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="footer"></footer>
+
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+
+  </body>
+</html>
