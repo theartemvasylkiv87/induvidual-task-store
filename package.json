@@ -4,8 +4,15 @@
   "description": "This template repository includes preconfigured GitHub Action that will validate html files in a project with (HTMLProofer)[https://github.com/gjtorikian/html-proofer/]. And htmx to load partials",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "dev": "vite",
     "build": "vite build"
+=======
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch scss/style.scss css/style.css"
+>>>>>>> 464009c4d2dcf6a2557e844a307d7c1b81631e01
   },
   "repository": {
     "type": "git",
@@ -16,12 +23,16 @@
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/theartemvasylkiv87/induvidual-task-store/issues"
+    "url": "https://github.com/theartemvasylkiv87/induvidual-task-store.git/issues"
   },
   "homepage": "https://github.com/theartemvasylkiv87/induvidual-task-store#readme",
   "devDependencies": {
     "sass": "^1.100.0",
+<<<<<<< HEAD
     "vite": "^8.0.14",
     "vite-plugin-html-inject": "^1.1.2"
+=======
+    "typescript": "^5.4.5"
+>>>>>>> 464009c4d2dcf6a2557e844a307d7c1b81631e01
   }
 }
