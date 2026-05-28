@@ -3,60 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>WatchVault</title>
     <link rel="shortcut icon" href="#" type="image/x-icon" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script
-      src="https://unpkg.com/htmx.org@1.9.10"
-      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
-      crossorigin="anonymous"
-    ></script>
+    
+    <link rel="stylesheet" href="./scss/style.scss" />
   </head>
   <body>
     <header class="header">
-      <nav
-        data-hx-trigger="load"
-        data-hx-swap="outerHTML"
-        data-hx-get="global.header-nav.partial.html"
-      ></nav>
+      <load ="./global.header-nav.partial.html" />
     </header>
+
     <main class="main">
-      <!-- <div id="shopView">
-        <nav
-          data-hx-trigger="load"
-          data-hx-swap="outerHTML"
-          data-hx-get="index.form-section.partial.html"
-        ></nav>
-        <nav
-          data-hx-trigger="load"
-          data-hx-swap="outerHTML"
-          data-hx-get="index.inventory-inner.partial.html"
-        ></nav>
-        <nav
-          data-hx-trigger="load"
-          data-hx-swap="outerHTML"
-          data-hx-get="index.products-list.partial.html"
-        ></nav>
+      <div id="shopView">
+        <load ="./index.form-section.partial.html" />
+        <load ="./index.inventory-inner.partial.html" />
+        <load ="./index.products-list.partial.html" />
       </div>
+      
       <div id="ordersView" class="orders-view is-hidden">
-        <nav
-          data-hx-trigger="load"
-          data-hx-swap="outerHTML"
-          data-hx-get="index.orders-view.partial.html"
-        ></nav> -->
+        <load ="./index.orders-view.partial.html" />
       </div>
     </main>
+
     <footer class="footer"></footer>
-    <nav
-      data-hx-trigger="load"
-      data-hx-swap="outerHTML"
-      data-hx-get="index.cart-overlay.partial.html"
-    ></nav>
-    <!-- <nav
-      data-hx-trigger="load"
-      data-hx-swap="outerHTML"
-      data-hx-get="index.cart-drawer.partial.html"
-    ></nav> -->
-    <script type="module" src="js/script.js"></script>
+
+    <load ="./index.cart-overlay.partial.html" />
+
+    <script type="module" src="./ts/script.ts"></script>
   </body>
 </html>
