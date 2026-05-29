@@ -6,29 +6,29 @@
     <title>WatchVault</title>
     <link rel="shortcut icon" href="#" type="image/x-icon" />
     
-    <link rel="stylesheet" href="./scss/style.scss" />
+    <link rel="stylesheet" href="./src/scss/style.scss" />
   </head>
   <body>
     <header class="header">
-      <load ="./global.header-nav.partial.html" />
+      <load ="./src/html/global.header-nav.partial.html" />
     </header>
 
     <main class="main">
       <div id="shopView">
-        <load ="./index.form-section.partial.html" />
-        <load ="./index.inventory-inner.partial.html" />
-        <load ="./index.products-list.partial.html" />
+        <load ="./src/html/index.form-section.partial.html" />
+        <load ="./src/html/index.inventory-inner.partial.html" />
+        <load ="./src/html/index.products-list.partial.html" />
       </div>
       
       <div id="ordersView" class="orders-view is-hidden">
-        <load ="./index.orders-view.partial.html" />
+        <load ="./src/html/index.orders-view.partial.html" />
       </div>
     </main>
 
     <footer class="footer"></footer>
 
-    <load ="./index.cart-overlay.partial.html" />
+    <load ="./src/html/index.cart-overlay.partial.html" />
 
-    <script type="module" src="./ts/script.ts"></script>
+    <script type="module" src="/src/ts/script.ts"></script>
   </body>
 </html>

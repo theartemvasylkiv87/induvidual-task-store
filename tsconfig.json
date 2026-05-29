@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ES2020",
-    "lib": ["ES2020", "DOM"],
-    "outDir": "./js",
-    "rootDir": "./ts",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "sourceMap": false
+    "target": "ESNext",         // Дозволяє використовувати найновіші фішки JS
+    "module": "ESNext",         // Потрібно для роботи сучасних імпортів (import/export)
+    "lib": ["ESNext", "DOM"],   // Щоб TS знав про браузерні штуки (window, document)
+    "moduleResolution": "bundler", // КРИТИЧНО для Vite: довіряємо пошук файлів збирачу
+    
+    "strict": true,             // Робить твій код якісним (вимагає типізацію)
+    "esModuleInterop": true,    // Для сумісності зі старими бібліотеками
+    "skipLibCheck": true,       // Пришвидшує роботу, не перевіряючи системні файли
+    "isolatedModules": true,    // Обов'язкова вимога Vite для швидкої обробки файлів
+    
+    "noEmit": true,             // Каже TS: "Не створюй JS файли самостійно, це зробить Vite"
+    "sourceMap": true           // Допомагає бачити помилки саме в TS файлах у браузері
   },
-  "include": ["ts/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"]       // Дивимося на всі файли в папці src
 }
