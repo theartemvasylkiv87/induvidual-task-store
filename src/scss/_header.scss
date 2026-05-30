@@ -2,7 +2,7 @@
   background: var(--header-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  position: sticky;
+  position: sticky; // Залишаємо sticky для ефекту "липкого" хедера
   top: 0;
   width: 100%;
   z-index: 1000;
@@ -62,34 +62,39 @@
 }
 
 .burger {
-  display: flex; 
-  flex-direction: column;
-  gap: 0.3rem;
-  cursor: pointer;
-  z-index: 1001; // Має бути вище за фон меню
-  background: none;
-  border: none;
-  padding: 0;
-
-  @media (min-width: 769px) {
-    display: none;
-  }
+  position: relative; // Батько для ліній
+  width: 30px;
+  height: 30px;
 
   &-line {
+    position: absolute; // Накладаємо всі лінії в одну точку
+    top: 50%;
+    left: 50%;
     width: 25px;
     height: 3px;
     background-color: var(--text-main);
+    // Центруємо їх відносно кнопки
+    transform: translate(-50%, -50%); 
     transition: all 0.3s ease;
+
+    // Розсовуємо лінії в початковий стан (бургер)
+    &:nth-child(1) { transform: translate(-50%, calc(-50% - 8px)); }
+    &:nth-child(2) { transform: translate(-50%, -50%); }
+    &:nth-child(3) { transform: translate(-50%, calc(-50% + 8px)); }
   }
 
-  // Анімація хрестика (твоя версія робоча, лишаємо)
-  &.active .burger-line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  &.active .burger-line:nth-child(2) {
-    opacity: 0;
-  }
-  &.active .burger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+  // Стан Хрестика (Active)
+  &.active {
+    .burger-line:nth-child(1) {
+      // Повертаємо в центр і крутимо
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .burger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .burger-line:nth-child(3) {
+      // Повертаємо в центр і крутимо в інший бік
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
   }
 }

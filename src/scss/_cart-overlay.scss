@@ -10,7 +10,9 @@
   // Початковий стан оверлею (фон)
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 
   // Коли кошик відкритий
   &.active {
@@ -27,8 +29,8 @@
     position: absolute; // Змінюємо на absolute, бо батько вже fixed
     top: 0;
     right: 0;
-    width: 400px;
-    height: 100%;
+    width: 100%;
+    height: 100dvh; // Використовуємо dvh для коректного відображення на мобілках
     background-color: var(--clr-white);
     display: flex;
     flex-direction: column;
@@ -38,11 +40,19 @@
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
 
+    @media (min-width: 769px) {
+      width: 400px;
+    }
+
     &__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 2rem;
+
+      @media (min-width: 769px) {
+        padding: 2rem; // Повертаємо більше простору на ПК
+      }
     }
 
     // Решта твоїх стилів для елементів...
