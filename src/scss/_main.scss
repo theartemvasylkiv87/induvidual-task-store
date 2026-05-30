@@ -1,3 +1,11 @@
+// Коли завантажиться основний CSS, він переб'є інлайновий стиль для роьботи з vite
+html {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
 body {
   font-family: "Finlandica Text";
   background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3), var(--bg-gradient-4));
@@ -5,6 +13,11 @@ body {
   animation: gradientBG 15s ease infinite;
   min-height: 100vh;
 
+}
+
+// Вимикаємо анімації під час завантаження
+.preload * {
+  transition: none ;
 }
 
 @keyframes gradientBG {

@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WatchVault</title>
     <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <style>
+      /* Ховаємо все, поки не завантажиться CSS для роботи з vite */
+      html {
+        visibility: hidden;
+        opacity: 0;
+      }
+    </style>
   </head>
-  <body>
+  <body class="preload">
     <header class="header">
       <load ="./src/html/global.header-nav.partial.html" />
     </header>
@@ -17,7 +24,7 @@
         <load ="./src/html/index.inventory-inner.partial.html" />
         <load ="./src/html/index.products-list.partial.html" />
       </div>
-      
+
       <div id="ordersView" class="orders-view is-hidden">
         <load ="./src/html/index.orders-view.partial.html" />
       </div>
@@ -26,7 +33,6 @@
     <footer class="footer"></footer>
 
     <load ="./src/html/index.cart-overlay.partial.html" />
-
 
     <script type="module" src="/src/ts/script.ts"></script>
   </body>

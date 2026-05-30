@@ -4,9 +4,15 @@ import '../scss/style.scss'
 // 1. Імпортуємо функцію з твого нового модуля
 import { initCartOverlay } from './modules/cart-overlay';
 import { initBurgerMenu } from './modules/burger';
+import { initRegisterForm } from './modules/register-form';
 
-// Ініціалізуємо бургер-меню
+// Ініціалізуємо всі функції після імпорту
 initBurgerMenu();
-
-// 2. Викликаємо її, щоб код почав працювати
+initRegisterForm();
 initCartOverlay();
+
+
+// Додаємо клас "preload" до body, щоб приховати вміст до повного завантаження сторінки для vite
+window.addEventListener('load', () => {
+  document.body.classList.remove('preload');
+}); 

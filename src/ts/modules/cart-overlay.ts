@@ -3,8 +3,8 @@ export function initCartOverlay() : void {
     // Тут буде код для роботи з оверлеєм корзини
 
     const cartOverlay = document.getElementById('cartOverlay') as HTMLElement;
-    const cartButton = document.getElementById('cartLink') as HTMLElement;
-    const closeButton = document.getElementById('closeCartBtn') as HTMLElement; 
+    const cartButton = document.getElementById('cartLink') as HTMLButtonElement;
+    const closeButton = document.getElementById('closeCartBtn') as HTMLButtonElement; 
 
     function toggleCartOverlay() : void {
         cartOverlay.classList.toggle('active');

@@ -23,7 +23,9 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
 
     &:focus {
       outline: none;
@@ -41,14 +43,25 @@
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition:
+      background-color 0.3s ease,
+      // Плавність зміни кольору
+      transform 0.2s ease; // Додаємо плавність для ефекту натискання
 
-    &:hover {
-      background-color: var(--accent-hover);
+    &:hover:not(:disabled) {
+      background-color: var(--accent-hover); // Твій золотий колір WatchVault
     }
 
-    &:active {
-      transform: scale(0.98); // Ефект натискання
+    &:active:not(:disabled) {
+      transform: scale(0.95); // Більший ефект натискання
+    }
+
+    &:disabled {
+      background-color: #ccc; // Сірий колір
+      color: var(--clr-gray); // Темно-сірий для тексту
+      cursor: not-allowed; // Міняє курсор на "заборонено"
+      opacity: 0.7;
+      transform: none; // Прибираємо будь-які ефекти руху
     }
   }
 
