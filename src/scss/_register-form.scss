@@ -1,0 +1,61 @@
+.form {
+  display: flex;
+  flex-wrap: wrap; // Дозволяє елементам переноситися на новий рядок на мобільних
+  gap: 1rem; // Відстань між інпутами
+  align-items: center;
+  padding: 2rem;
+  background: var(--header-bg); // Використовуємо твій фон з хедера
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 1200px;
+  margin: 2rem auto;
+
+  &__title {
+    width: 100%; // Заголовок завжди займає весь верхній рядок
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--text-main);
+  }
+
+  &__input {
+    flex: 1 1 200px; // Гнучкість: розтягуватися, але не бути менше 200px
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent-hover); // Твій золотий колір WatchVault
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1); // Легке сяйво
+    }
+  }
+
+  &__button {
+    flex: 0 1 auto; // Кнопка не розтягується без потреби
+    padding: 0.8rem 1.5rem;
+    background-color: var(--text-main);
+    color: var(--clr-white);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: var(--accent-hover);
+    }
+
+    &:active {
+      transform: scale(0.98); // Ефект натискання
+    }
+  }
+
+  // На дуже вузьких екранах кнопка теж буде на всю ширину
+  @media (max-width: 480px) {
+    &__button {
+      width: 100%;
+    }
+  }
+}

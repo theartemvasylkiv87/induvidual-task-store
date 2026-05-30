@@ -66,6 +66,10 @@
   width: 30px;
   height: 30px;
 
+  @media (min-width: 769px) {
+    display: none; // Ховаємо бургер на десктопі
+  }
+
   &-line {
     position: absolute; // Накладаємо всі лінії в одну точку
     top: 50%;
