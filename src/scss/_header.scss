@@ -1,51 +1,95 @@
 .header {
   background: var(--header-bg);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); // Для підтримки Safari
+  -webkit-backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 1000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); // Тонка лінія знизу краще, ніж border з усіх боків
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
   &-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem; // Трохи менше зверху/знизу для компактності
+    padding: 1rem 2rem; // Трохи зменшив для мобілок
     margin: 0 auto;
     max-width: 1200px;
-  }
-
-  // Використовуємо & прямо всередині .header, щоб не дублювати назви
-  &-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    &-icon {
-      font-size: 1.5rem;
-    }
-
-    &-text {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: var(--text-main); // Трохи м'якший за чистий чорний
-    }
+    position: relative; // Щоб z-index ліній працював коректно
   }
 
   &-nav {
+    position: fixed;
+    top: -100dvh; // Виправив на dvh для мобілок
+    left: 0;
+    width: 100%; // Виправив "100%і"
+    height: 100dvh;
+    padding: 5rem 2rem; 
+    background: var(--clr-white);
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 2rem;
+    transition: top 0.4s ease-in-out;
+    z-index: -1; // Ставимо під контент хедера, щоб воно виїжджало "з-під" логотипу
+
+    &.active {
+      top: 0;
+    }
+
+    @media (min-width: 769px) {
+      position: static;
+      width: auto;
+      height: auto;
+      flex-direction: row;
+      background: transparent;
+      transition: none;
+      padding: 0; // ОБОВ'ЯЗКОВО скидаємо паддінг
+      z-index: auto;
+    }
 
     &-link {
       color: var(--text-main);
       font-size: 1.1rem;
-      transition: color 0.3s ease; // Плавна зміна кольору
+      transition: color 0.3s ease;
 
       &:hover {
-        color: var(--accent-hover); // Твій золотий колір WatchVault замість просто сірого
+        color: var(--accent-hover);
       }
     }
+  }
+}
+
+.burger {
+  display: flex; 
+  flex-direction: column;
+  gap: 0.3rem;
+  cursor: pointer;
+  z-index: 1001; // Має бути вище за фон меню
+  background: none;
+  border: none;
+  padding: 0;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+
+  &-line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-main);
+    transition: all 0.3s ease;
+  }
+
+  // Анімація хрестика (твоя версія робоча, лишаємо)
+  &.active .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  &.active .burger-line:nth-child(2) {
+    opacity: 0;
+  }
+  &.active .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 }
