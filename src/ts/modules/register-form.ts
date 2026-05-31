@@ -16,7 +16,7 @@ export function initRegisterForm(): void {
     return;
   }
 
-  const validateInputs = (): void => {
+  const validateInputs = () : void => { 
     const name: string = nameInput.value.trim();  // value це з обєкту nameInput, trim() видаляє пробіли з початку і кінця рядка
     const price: number = parseFloat(priceInput.value); // parseFloat перетворює рядок в число з плаваючою точкою
     const quantity: number = parseInt(quantityInput.value); // parseInt перетворює рядок в ціле число
@@ -33,9 +33,21 @@ export function initRegisterForm(): void {
     );
   };
 
+  const clearForm = () : void => {
+    nameInput.value = "";
+    priceInput.value = "";
+    quantityInput.value = "";
+    validateInputs(); // Оновлюємо стан кнопки після очищення форми
+  }
+
   // Реєструємо слухачі подій для кожного поля вводу, щоб викликати validateInputs при кожному зміненні
   [nameInput, priceInput, quantityInput].forEach((input) : void => {
     input.addEventListener("input", validateInputs);
+  });
+
+  registerButton.addEventListener("click", (e: Event) : void => {
+    e.preventDefault(); // Запобігаємо стандартній поведінці кнопки (якщо вона в формі)
+    clearForm();
   });
 
   // Перша валідація при завантаженні

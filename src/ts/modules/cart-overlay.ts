@@ -2,14 +2,19 @@ export function initCartOverlay() : void {
     console.log('Cart overlay module initialized');
     // Тут буде код для роботи з оверлеєм корзини
 
-    const cartOverlay = document.getElementById('cartOverlay') as HTMLElement;
-    const cartButton = document.getElementById('cartLink') as HTMLButtonElement;
-    const closeButton = document.getElementById('closeCartBtn') as HTMLButtonElement; 
+    const cartOverlay = document.getElementById('cartOverlay') as HTMLElement | null;
+    const cartButton = document.getElementById('cartLink') as HTMLButtonElement | null;
+    const closeButton = document.getElementById('closeCartBtn') as HTMLButtonElement | null;
 
-    function toggleCartOverlay() : void {
-        cartOverlay.classList.toggle('active');
+    if (!cartOverlay || !cartButton || !closeButton) {
+        console.error('One or more required elements not found');
+        return;
     }
-    
+
+    const toggleCartOverlay = () : void => {
+        cartOverlay.classList.toggle('active');
+    };
+
     cartButton.addEventListener('click', (e: Event) : void => {
         e.preventDefault();
         toggleCartOverlay();
