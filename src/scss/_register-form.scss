@@ -57,7 +57,7 @@
     }
 
     &:disabled {
-      background-color: #ccc; // Сірий колір
+      background-color: var(--clr-light-gray); // Сірий колір
       color: var(--clr-gray); // Темно-сірий для тексту
       cursor: not-allowed; // Міняє курсор на "заборонено"
       opacity: 0.7;
