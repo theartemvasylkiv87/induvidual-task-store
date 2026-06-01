@@ -1,0 +1,78 @@
+// Головний контейнер
+.inventory {
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; // Щоб на мобільних усе красиво переносилося
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    background: var(--header-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    max-width: 1200px;
+    margin: 2rem auto;
+
+    &__title {
+      width: 100%; // Заголовок завжди займає весь верхній рядок
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: var(--text-main);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap; // Для гнучкості на малих екранах
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  .inventory-container__select,
+  .search-box__input {
+    width: 100%;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.95rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent-hover); // Твій золотий акцент
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15); // Елегантне золотаве сяйво
+    }
+  }
+
+  &-container__select {
+    min-width: 250px;
+    cursor: pointer;
+    background-position: right 1rem center;
+    padding-right: 2.5rem; // Місце для кастомної стрілочки
+  }
+
+  .search-box {
+    position: relative;
+    min-width: 250px;
+    min-width: 100%;
+
+    &__input {
+      padding-right: 2.5rem; // Місце для іконки лупи справа
+    }
+
+    &__icon {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      pointer-events: none; // Щоб клік проходив крізь лупу в інпут
+      opacity: 0.6;
+    }
+  }
+}
+
