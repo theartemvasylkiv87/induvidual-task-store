@@ -1,6 +1,6 @@
-// Головний контейнер
 .inventory {
-  &-container {
+  // Головний контейнер (тепер .inventory__container)
+  &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,15 +12,17 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     max-width: 1200px;
     margin: 2rem auto;
-
-    &__title {
-      width: 100%; // Заголовок завжди займає весь верхній рядок
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-      color: var(--text-main);
-    }
   }
 
+  // Заголовок (тепер .inventory__title)
+  &__title {
+    width: 100%; // Заголовок завжди займає весь верхній рядок
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--text-main);
+  }
+
+  // Блок з екшенами (.inventory__actions)
   &__actions {
     display: flex;
     align-items: center;
@@ -30,7 +32,16 @@
     justify-content: flex-end;
   }
 
-  .inventory-container__select,
+  // Селект фільтрації (.inventory__select)
+  &__select {
+    min-width: 250px;
+    cursor: pointer;
+    background-position: right 1rem center;
+    padding-right: 2.5rem; // Місце для кастомної стрілочки
+  }
+
+  // Спільні стилі для селекту та інпуту пошуку
+  &__select,
   .search-box__input {
     width: 100%;
     padding: 0.75rem 1.2rem;
@@ -47,32 +58,24 @@
       box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15); // Елегантне золотаве сяйво
     }
   }
-
-  &-container__select {
-    min-width: 250px;
-    cursor: pointer;
-    background-position: right 1rem center;
-    padding-right: 2.5rem; // Місце для кастомної стрілочки
-  }
-
-  .search-box {
-    position: relative;
-    min-width: 250px;
-    min-width: 100%;
-
-    &__input {
-      padding-right: 2.5rem; // Місце для іконки лупи справа
-    }
-
-    &__icon {
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1rem;
-      pointer-events: none; // Щоб клік проходив крізь лупу в інпут
-      opacity: 0.6;
-    }
-  }
 }
 
+// Окремий незалежний блок пошуку (як у HTML)
+.search-box {
+  position: relative;
+  min-width: 100%; // Виправив очевидну помилку з двома min-width поспіль, що була у тебе
+
+  &__input {
+    padding-right: 2.5rem; // Місце для іконки лупи справа
+  }
+
+  &__icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    pointer-events: none; // Щоб клік проходив крізь лупу в інпут
+    opacity: 0.6;
+  }
+}
