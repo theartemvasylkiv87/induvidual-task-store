@@ -14,13 +14,18 @@ export function initRegisterForm(): void {
     "productsList",
   ) as HTMLUListElement | null;
 
+  const imageInput = document.getElementById(
+    "image",
+  ) as HTMLInputElement | null;
+
   // Перевірка, чи всі елементи існують (Type Guard) якщо є null, то виводимо помилку і виходимо з функції
   if (
     !productsList ||
     !registerButton ||
     !nameInput ||
     !priceInput ||
-    !quantityInput
+    !quantityInput ||
+    !imageInput
   ) {
     console.error("Form elements not found or product list not found!");
     return;
@@ -30,12 +35,14 @@ export function initRegisterForm(): void {
     const name: string = nameInput.value.trim(); // value це з обєкту nameInput, trim() видаляє пробіли з початку і кінця рядка
     const price: number = parseFloat(priceInput.value); // parseFloat перетворює рядок в число з плаваючою точкою
     const quantity: number = parseInt(quantityInput.value); // parseInt перетворює рядок в ціле число
+    const image: string = imageInput.value.trim(); // Валідуємо, щоб картинка теж була вказана trim() видаляє пробіли з початку і кінця рядка
 
     // Логічний вираз замість if/else — коротше і зрозуміліше
     // тут ми перевіряємо, чи всі умови виконуються для активації кнопки реєстрації:
     // якщо в середені все true, то disvabled буде false, якщо хоча б одна умова false, то disabled буде true
     registerButton.disabled = !(
       name &&
+      image &&
       !isNaN(price) &&
       !isNaN(quantity) &&
       price > 0 &&
@@ -48,9 +55,13 @@ export function initRegisterForm(): void {
     const name: string = nameInput.value.trim();
     const price: number = parseFloat(priceInput.value);
     const quantity: number = parseInt(quantityInput.value);
+    const image: string = imageInput.value.trim(); // Валідуємо, щоб картинка теж була вказана
     const listItem: HTMLLIElement = document.createElement("li");
     listItem.classList.add("products-item");
     listItem.innerHTML = `
+    <div class="products-item-image">
+            <img src="${image}" alt="${name}" class="product-image">
+        </div>
         <div class="products-item-info">
             <h4 class="products-item-title">${name}</h4>
             <div class="products-item-details">
@@ -60,18 +71,30 @@ export function initRegisterForm(): void {
         </div>
         <button class="delete-btn">Видалити</button>
     `;
-    productsList.appendChild(listItem);
+    productsList.appendChild(listItem); // додаємо новий елемент до списку продуктів
+
+    // Додаємо слухач події для кнопки видалення, щоб видалити відповідний елемент списку при натисканні
+    const deleteButton = listItem.querySelector(
+      ".delete-btn",
+    ) as HTMLButtonElement | null;
+    if (deleteButton) {
+      deleteButton.addEventListener("click", (): void => {
+        productsList.removeChild(listItem);
+      });
+    }
   };
 
   const clearForm = (): void => {
     nameInput.value = "";
     priceInput.value = "";
     quantityInput.value = "";
+    imageInput.value = "";
     validateInputs(); // Оновлюємо стан кнопки після очищення форми
+
   };
 
   // Реєструємо слухачі подій для кожного поля вводу, щоб викликати validateInputs при кожному зміненні
-  [nameInput, priceInput, quantityInput].forEach((input): void => {
+  [nameInput, priceInput, quantityInput, imageInput].forEach((input): void => {
     input.addEventListener("input", validateInputs);
   });
 
