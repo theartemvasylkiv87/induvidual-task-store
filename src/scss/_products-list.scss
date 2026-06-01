@@ -1,3 +1,49 @@
-.products-list {
+.products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  &-list {
+    display: flex;
+    flex-wrap: wrap; // Дозволяє карткам стрибати на новий рядок
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: flex-start; // Картки завжди лишаються притиснутими до лівого краю
+    align-items: stretch;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem 2rem;
+    background: var(--header-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+
+    // --- ЛОГІКА ПЕРЕНОСУ ТА ШИРИНИ (Mobile First) ---
+
+    // 1. Дефолт (найменші мобільні): 1 картка в ряд (100% ширини)
+    width: 100%; 
+
+    // 2. Смартфони та міні-планшети (від 480px): 2 картки в ряд
+    // Формула: (100% - 1 проміжок) / 2
+    @media (min-width: 480px) {
+      width: calc((100% - 1 * 2rem) / 2);
+    }
+
+    // 3. Планшети та нетбуки (від 768px): 3 картки в ряд
+    // Формула: (100% - 2 проміжки) / 3
+    @media (min-width: 768px) {
+      width: calc((100% - 2 * 2rem) / 3);
+    }
+
+    // 4. Великі екрани / десктоп (від 1024px): 4 картки в ряд
+    // Формула: (100% - 3 проміжки) / 4
+    @media (min-width: 1024px) {
+      width: calc((100% - 3 * 2rem) / 4);
+    }
+  }
 }

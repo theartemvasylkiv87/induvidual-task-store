@@ -49,13 +49,13 @@ export function initRegisterForm(): void {
     const price: number = parseFloat(priceInput.value);
     const quantity: number = parseInt(quantityInput.value);
     const listItem: HTMLLIElement = document.createElement("li");
-    listItem.classList.add("product-item");
+    listItem.classList.add("products-item");
     listItem.innerHTML = `
-        <div class="product-info">
-            <h4 class="product-title">${name}</h4>
-            <div class="product-details">
-                <span class="product-price">Ціна: ${price.toFixed(2)} $</span>
-                <span class="product-qty">Кількість: ${quantity} шт.</span>
+        <div class="products-item-info">
+            <h4 class="products-item-title">${name}</h4>
+            <div class="products-item-details">
+                <span class="products-item-price">Ціна: ${price.toFixed(2)} $</span>
+                <span class="products-item-qty">Кількість: ${quantity} шт.</span>
             </div>
         </div>
         <button class="delete-btn">Видалити</button>
