@@ -48,11 +48,11 @@
       // Плавність зміни кольору
       transform 0.2s ease; // Додаємо плавність для ефекту натискання
 
-    &:hover:not(:disabled) {
+    &:hover {
       background-color: var(--accent-hover); // Твій золотий колір WatchVault
     }
 
-    &:active:not(:disabled) {
+    &:active {
       transform: scale(0.95); // Більший ефект натискання
     }
 

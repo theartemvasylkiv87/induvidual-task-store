@@ -1,3 +1,10 @@
+// для локалстореджу
+import {
+  Product,
+  getProductsFromStorage,
+  saveProductsToStorage,
+} from "./products-storage";
+
 export function initRegisterForm(): void {
   const registerButton = document.getElementById(
     "addBtn",
@@ -32,6 +39,7 @@ export function initRegisterForm(): void {
   }
 
   const validateInputs = (): void => {
+    // створюємоо функцію для валідації полів вводу, яка буде викликатися при кожному зміненні в полях
     const name: string = nameInput.value.trim(); // value це з обєкту nameInput, trim() видаляє пробіли з початку і кінця рядка
     const price: number = parseFloat(priceInput.value); // parseFloat перетворює рядок в число з плаваючою точкою
     const quantity: number = parseInt(quantityInput.value); // parseInt перетворює рядок в ціле число
@@ -50,30 +58,27 @@ export function initRegisterForm(): void {
     );
   };
 
-  const addProduct = (): void => {
-    // створюємо обєкт продукту з даних, які ввів користувач
-    const name: string = nameInput.value.trim();
-    const price: number = parseFloat(priceInput.value);
-    const quantity: number = parseInt(quantityInput.value);
-    const image: string = imageInput.value.trim(); // Валідуємо, щоб картинка теж була вказана
+  const renderProductItem = (product: Product): void => {
     const listItem: HTMLLIElement = document.createElement("li");
     listItem.classList.add("products-item");
-    listItem.innerHTML = `
-    <div class="products-item-image">
-            <img src="${image}" alt="${name}" class="product-image">
-        </div>
-        <div class="products-item-info">
-            <h4 class="products-item-title">${name}</h4>
-            <div class="products-item-details">
-                <span class="products-item-price">Ціна: ${price.toFixed(2)} $</span>
-                <span class="products-item-qty">Кількість: ${quantity} шт.</span>
-            </div>
-        </div>
-        <button class="delete-btn">Видалити</button>
-    `;
-    productsList.appendChild(listItem); // додаємо новий елемент до списку продуктів
 
-    // Додаємо слухач події для кнопки видалення, щоб видалити відповідний елемент списку при натисканні
+    // Перетворюємо числове id в рядок для HTML-атрибуту
+    listItem.dataset.id = product.id.toString();
+
+    listItem.innerHTML = `
+      <div class="products-item-image">
+          <img src="${product.image}" alt="${product.name}" class="product-image">
+      </div>
+      <div class="products-item-info">
+          <h4 class="products-item-title">${product.name}</h4>
+          <div class="products-item-details">
+              <span class="products-item-price">Ціна: ${product.price.toFixed(2)} $</span>
+              <span class="products-item-qty">Кількість: ${product.quantity} шт.</span>
+          </div>
+      </div>
+      <button class="delete-btn">Видалити</button>
+    `;
+
     const deleteButton = listItem.querySelector(
       ".delete-btn",
     ) as HTMLButtonElement | null;
@@ -82,6 +87,31 @@ export function initRegisterForm(): void {
         productsList.removeChild(listItem);
       });
     }
+
+    productsList.appendChild(listItem);
+  };
+
+  const addProduct = (): void => {
+    // 1. Збираємо дані з форми та створюємо правильний об'єкт
+    const newProduct: Product = {
+      id: Date.now(), // Створюємо унікальне число через мілісекунди
+      name: nameInput.value.trim(),
+      price: parseFloat(priceInput.value),
+      quantity: parseInt(quantityInput.value),
+      image: imageInput.value.trim(),
+    };
+
+    // 2. Дістаємо поточний масив продуктів зі сховища
+    const currentProducts = getProductsFromStorage();
+
+    // 3. Додаємо наш новий продукт у цей масив
+    currentProducts.push(newProduct);
+
+    // 4. Записуємо оновлений масив назад у сховище
+    saveProductsToStorage(currentProducts);
+
+    // 5. Передаємо об'єкт у функцію рендерингу, щоб він з'явився на екрані
+    renderProductItem(newProduct);
   };
 
   const clearForm = (): void => {
@@ -90,7 +120,6 @@ export function initRegisterForm(): void {
     quantityInput.value = "";
     imageInput.value = "";
     validateInputs(); // Оновлюємо стан кнопки після очищення форми
-
   };
 
   // Реєструємо слухачі подій для кожного поля вводу, щоб викликати validateInputs при кожному зміненні
@@ -104,6 +133,17 @@ export function initRegisterForm(): void {
     clearForm();
   });
 
-  // Перша валідація при завантаженні
+  // ... (весь твій попередній код, слухачі подій тощо)
+
+  // 1. Описуємо функцію завантаження
+  const initLoad = (): void => {
+    const savedProducts = getProductsFromStorage();
+    savedProducts.forEach((product) => renderProductItem(product));
+  };
+
+  // 2. Викликаємо її, щоб товари з'явилися при старті
+  initLoad();
+
+  // 3. Твоя рідна перша валідація при завантаженні
   validateInputs();
-}
+} // Кінець функції initRegisterForm
