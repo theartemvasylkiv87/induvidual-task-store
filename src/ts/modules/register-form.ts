@@ -84,6 +84,18 @@ export function initRegisterForm(): void {
     ) as HTMLButtonElement | null;
     if (deleteButton) {
       deleteButton.addEventListener("click", (): void => {
+        // 1. Дістаємо поточний масив продуктів зі сховища
+        const currentProducts = getProductsFromStorage();
+
+        // 2. Фільтруємо масив, видаляючи продукт з відповідним id
+        const updatedProducts = currentProducts.filter(
+          (p) => p.id !== product.id,
+        );
+
+        // 3. Записуємо оновлений масив назад у сховище
+        saveProductsToStorage(updatedProducts);
+
+        // 4. Видаляємо елемент зі сторінки
         productsList.removeChild(listItem);
       });
     }
