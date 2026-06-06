@@ -4,6 +4,7 @@ import {
   getProductsFromStorage,
   saveProductsToStorage,
 } from "./products-storage";
+import { DEFAULT_WATCHES } from "./defaut-products";
 
 export function initRegisterForm(): void {
   const registerButton = document.getElementById(
@@ -25,7 +26,6 @@ export function initRegisterForm(): void {
     "image",
   ) as HTMLInputElement | null;
 
-  // Перевірка, чи всі елементи існують (Type Guard) якщо є null, то виводимо помилку і виходимо з функції
   if (
     !productsList ||
     !registerButton ||
@@ -39,7 +39,6 @@ export function initRegisterForm(): void {
   }
 
   const validateInputs = (): void => {
-    // створюємоо функцію для валідації полів вводу, яка буде викликатися при кожному зміненні в полях
     const name: string = nameInput.value.trim(); // value це з обєкту nameInput, trim() видаляє пробіли з початку і кінця рядка
     const price: number = parseFloat(priceInput.value); // parseFloat перетворює рядок в число з плаваючою точкою
     const quantity: number = parseInt(quantityInput.value); // parseInt перетворює рядок в ціле число
@@ -145,17 +144,27 @@ export function initRegisterForm(): void {
     clearForm();
   });
 
-  // ... (весь твій попередній код, слухачі подій тощо)
+  // 1. Описуємо функцію ініціалізації (заповнення localStorage на першому завантаженні)
+  const initializeStorage = (): void => {
+    const savedProducts = getProductsFromStorage();
+    // Якщо сховище порожне, заповнюємо його годинниками за замовчуванням
+    if (savedProducts.length === 0) {
+      saveProductsToStorage(DEFAULT_WATCHES);
+    }
+  };
 
-  // 1. Описуємо функцію завантаження
+  // 2. Описуємо функцію завантаження
   const initLoad = (): void => {
     const savedProducts = getProductsFromStorage();
     savedProducts.forEach((product) => renderProductItem(product));
   };
 
-  // 2. Викликаємо її, щоб товари з'явилися при старті
+  // 3. Спочатку ініціалізуємо сховище
+  initializeStorage();
+
+  // 4. Потім завантажуємо продукти зі сховища
   initLoad();
 
-  // 3. Твоя рідна перша валідація при завантаженні
+  // 5. Твоя рідна перша валідація при завантаженні
   validateInputs();
 } // Кінець функції initRegisterForm
