@@ -1,20 +1,25 @@
 <section class="cart-overlay" id="cartOverlay">
   <aside class="cart-drawer" id="cartDrawer">
+    
     <div class="cart-drawer__header">
       <h2 class="cart-drawer__title">Your Cart 🛍️</h2>
       <button class="cart-drawer__close" id="closeCartBtn">✖️</button>
     </div>
 
-    <div class="cart-drawer__items" id="cartItems">
-      <p class="cart-drawer__empty">Your cart is empty.</p>
+    <div class="cart-drawer__content" id="cartItems">
+      <p class="cart-drawer__content--empty">Your cart is empty.</p>
     </div>
 
-    <div class="cart-drawer__footer">
-      <div class="cart-drawer__total">
-        <span class="cart-drawer__total-label">Subtotal:</span>
-        <span id="cartTotalPrice" class="cart-drawer__total-value">$0.00</span>
+    <div class="cart-drawer__summary cart-drawer__summary--total">
+      <div class="cart-drawer__summary-row">
+        <label>Subtotal:</label>
+        <value id="cartTotalPrice">$0.00</value>
       </div>
-      <button class="cart-drawer__checkout" id="checkoutBtn">Checkout</button>
     </div>
+
+    <div class="cart-drawer__actions">
+      <button class="cart-drawer__actions-checkout" id="checkoutBtn">Checkout</button>
+    </div>
+
   </aside>
 </section>
