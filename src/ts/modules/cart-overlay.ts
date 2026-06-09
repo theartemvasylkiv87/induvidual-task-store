@@ -24,8 +24,6 @@ export function initCartOverlay(): void {
     return;
   }
 
-
-
   const toggleCartOverlay = (): void => {
     cartOverlay.classList.toggle("active");
   };

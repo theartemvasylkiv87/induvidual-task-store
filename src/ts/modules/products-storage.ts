@@ -1,10 +1,4 @@
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-}
+import { Product } from "../types/products.types";
 
 // Ключ — це назва "коробки" в пам'яті браузера, де лежатимуть наші товари
 const STORAGE_KEY = "products_list";

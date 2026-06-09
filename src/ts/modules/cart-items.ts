@@ -1,9 +1,5 @@
-import { Product } from "./products-storage";
-
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
+import { Product } from "../types/products.types";
+import { CartItem } from "../types/cart.types";
 
 let cart: CartItem[] = [];
 
