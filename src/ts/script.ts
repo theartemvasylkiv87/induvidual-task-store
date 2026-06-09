@@ -6,6 +6,8 @@ import { initCartOverlay } from './modules/cart-overlay';
 import { initBurgerMenu } from './modules/burger';
 import { initRegisterForm } from './modules/register-form';
 
+
+
 // Ініціалізуємо всі функції після імпорту
 initBurgerMenu();
 initRegisterForm();

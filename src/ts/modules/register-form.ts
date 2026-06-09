@@ -5,6 +5,7 @@ import {
   saveProductsToStorage,
 } from "./products-storage";
 import { DEFAULT_WATCHES } from "./defaut-products";
+import { addProductToCart } from "./cart-items";
 
 export function initRegisterForm(): void {
   const registerButton = document.getElementById(
@@ -71,11 +72,13 @@ export function initRegisterForm(): void {
       <div class="products-item-info">
           <h4 class="products-item-title">${product.name}</h4>
           <div class="products-item-details">
-              <span class="products-item-price">Ціна: ${product.price.toFixed(2)} $</span>
-              <span class="products-item-qty">Кількість: ${product.quantity} шт.</span>
+              <span class="products-item-price">Price: ${product.price.toFixed(2)} $</span>
+              <span class="products-item-qty">Quantity: ${product.quantity} pcs.</span>
           </div>
       </div>
-      <button class="delete-btn">Видалити</button>
+      <button class="edit-btn">Change</button>
+      <button class="save-to-cart-btn" id="addToCartBtn">Add to Cart</button>
+      <button class="delete-btn">Delete</button>
     `;
 
     const deleteButton = listItem.querySelector(
@@ -96,6 +99,21 @@ export function initRegisterForm(): void {
 
         // 4. Видаляємо елемент зі сторінки
         productsList.removeChild(listItem);
+      });
+    }
+
+    // 1. Знаходимо кнопку "Додати в кошик" на картці товару, яку ми щойно створили
+    const addToCartButton = listItem.querySelector(
+      ".save-to-cart-btn",
+    ) as HTMLButtonElement | null;
+
+    if (addToCartButton) {
+      addToCartButton.addEventListener("click", (e: Event): void => {
+        e.preventDefault();
+
+        // 2. Каталог просто бере об'єкт `product` і "викидає" його в модуль кошика
+        // Самим кошиком каталог НЕ КЕРУЄ, він просто передає дані!
+        addProductToCart(product);
       });
     }
 
