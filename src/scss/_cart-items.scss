@@ -1,0 +1,51 @@
+/* Контейнер для одного товару в кошику */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Відступ між картинкою та текстом */
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0; /* Легка лінія розділення */
+}
+
+/* Обгортка для картинки, щоб тримати пропорції */
+.cart-item__image {
+  flex-shrink: 0; /* Щоб картинка не стискалася */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+/* Сама картинка */
+.cart-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Квадратна картинка без спотворень */
+}
+
+/* Блок з текстом (назва + ціна) */
+.cart-item__info {
+  flex-grow: 1; /* Займає весь вільний простір */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Назва товару */
+.cart-item__title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Ціна та кількість */
+.cart-item__price {
+  margin: 0;
+  font-size: 13px;
+  color: #666666; /* Тимчасовий сірий для другорядного тексту */
+}
