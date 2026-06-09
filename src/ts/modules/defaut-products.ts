@@ -1,4 +1,4 @@
-import { Product } from "./products-storage";
+import { Product } from "../types/products.types";
 
 // Експортуємо масив, щоб його можна було забрати в інші файли
 export const DEFAULT_WATCHES: Product[] = [

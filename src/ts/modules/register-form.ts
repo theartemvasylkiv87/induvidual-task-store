@@ -1,11 +1,11 @@
 // для локалстореджу
 import {
-  Product,
   getProductsFromStorage,
   saveProductsToStorage,
 } from "./products-storage";
 import { DEFAULT_WATCHES } from "./defaut-products";
-import { addProductToCart } from "./cart-items";
+import { addProductToCart} from "../services/cart-service";
+import { Product } from "../types/products.types";
 
 export function initRegisterForm(): void {
   const registerButton = document.getElementById(
