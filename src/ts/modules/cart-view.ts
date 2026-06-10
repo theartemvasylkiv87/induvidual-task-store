@@ -3,6 +3,7 @@ import { getCartItems, getCartTotal } from "./../services/cart-service";
 
 // Ця функція просто бере поточні дані з сервісу і малює їх на екрані
 export function renderCartUI(): void {
+  console.log("Оновлюємо UI кошика...");
   const cartItemsContainer = document.getElementById("cartItems") as HTMLElement | null;
   const totalPriceElement = document.getElementById("cartTotalPrice") as HTMLElement | null;
 
